@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AUTHORIZATION</title>
+  </head>
+  <body>
+    <script src="public/script.js"></script>
+    <div class="form-wrap">
+        <div class="profile">
+            <p>Если у вас нет аккаунта, перейдите на страницу <a href="/registration">регистрации</a></p>
+          <h1>Авторизация</h1>
+        </div>
+        <form action="/authorization" method="post">
+          <div>
+            <label for="userName">Имя Пользователя</label>
+            <input type="text" id="login" name="userName" required>
+          </div>
+          <div>
+            <label for="password">Введите пароль</label>
+            <input type="password" id="password1" name="password" required>
+          </div>
+         <button type="submit">Авторизоваться</button> 
+        </form> 
+
+      </div>
+  </body>
+</html>

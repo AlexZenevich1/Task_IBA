@@ -7,18 +7,16 @@
 <title>TASK</title>
 </head>
 
-<body>
-<h1>Выберите операцию над данными</h1>
-<a href="/insert"><input type="submit" value="Insert" ></a>
-<a href="/delete"><input type="submit" value="Delete" ></a>
-<a href="/select"><input type="submit" value="Select" ></a>
-<a href="/update"><input type="submit" value="Update" ></a>
-
-<form action="/logout" method="get">
-<input type="submit" value="logout">
-
-
-
+<h1>Здесь мы можем удалить данные</h1>
+<form action="/users/delete" method="post">
+<label for="name">Name</label>
+<input type="text" name="name" />
+<label for="email">Email</label>
+<input type="email" name="email" />
+<input
+type="submit"
+onClick='location.href="/users"'/>
+</form>
 
 </body>
 </html>
