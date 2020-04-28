@@ -2,21 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
+<script src="routes/routes.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <title>TASK</title>
+
 </head>
-
-<h1>Здесь мы можем удалить данные</h1>
-<form action="/users/delete" method="post">
-<label for="name">Name</label>
-<input type="text" name="name" />
-<label for="email">Email</label>
-<input type="email" name="email" />
-<input
-type="submit"
-onClick='location.href="/users"'/>
-</form>
-
+<body>
+<h1>Вы не владеете правами админа</h1>
+<a href="/"><input type="submit" value="Back"></>
 </body>
 </html>

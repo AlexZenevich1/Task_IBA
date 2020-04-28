@@ -1,55 +1,71 @@
 var userSession;
+
 const router = (app) => {
   app.get("/", (request, response) => {
     userSession = request.session;
     if (userSession.username) { 
-      response.sendfile("index.html");
+      response.sendfile("views/index.html");
     } else {
       response.redirect("/authorization");
     }
   });
 
   app.get("/registration", (request, response) => {
-    response.sendfile("registration.html");
+    response.sendfile("views/registration.html");
+  });
+  app.get("/error", (request, response) => {
+    response.sendfile("views/error.html");
   });
   app.get("/delete", (request, response) => {
     userSession = request.session;
-    if (userSession.username) { 
-      response.sendfile("delete.html");
-    } else {
-      response.redirect("/authorization");
+    // console.log(userSession.username=='YES')
+    if (userSession.username=='YES') { 
+      response.sendfile("views/delete.html");
+    } else if (userSession.username) { 
+        response.redirect("/error");
+      }
+     else{ 
+      response.redirect("/");
     }
   });
   
   app.get("/select", (request, response) => {
     userSession = request.session;
     if (userSession.username) { 
-      response.sendfile("select.html");
+      response.sendfile("views/select.html");
     } else {
-      response.redirect("/authorization");
+      response.redirect("/");
     }
   });
   
   app.get("/update", (request, response) => {
     userSession = request.session;
-    if (userSession.username) { 
-      response.sendfile("update.html");
-    } else {
-      response.redirect("/authorization");
+    // console.log(userSession.username=='YES')
+    if (userSession.username=='YES') { 
+      response.sendfile("views/update.html");
+    } else if (userSession.username) { 
+        response.redirect("/error");
+      }
+     else{ 
+      response.redirect("/");
     }
   });
   
   app.get("/insert", (request, response) => {
     userSession = request.session;
-    if (userSession.username) { 
-      response.sendfile("insert.html");
-    } else {
-      response.redirect("/authorization");
+    // console.log(userSession.username=='YES')
+    if (userSession.username=='YES') { 
+      response.sendfile("views/insert.html");
+    } else if (userSession.username) { 
+        response.redirect("/error");
+      }
+     else{ 
+      response.redirect("/");
     }
   });
   
   app.get("/authorization", (request, response) => {
-    response.sendfile("authorization.html");
+    response.sendfile("views/authorization.html");
   });
   app.get('/logout',function(req,res){
     req.session.destroy(function(err) {
@@ -77,16 +93,18 @@ const router = (app) => {
   });
   app.post("/authorization", (request, response) => {
     const gg = [request.body.userName, request.body.password];
-    console.log(request.body.userName);
-    console.log(request);
+    // console.log(request.body.userName);
+    // console.log(request);
     pool.query(
-      "SELECT password FROM registration where userName=? and password=?",
+      "SELECT adminRoutes FROM registration where userName=? and password=?",
       gg,
-      (error, result) => {
+      (error, result, fields) => {
         if (error) throw error;
         else if (result.length > 0) {
           userSession = request.session;
-          userSession.username = request.body.userName;
+          result.forEach( (result) => {
+            userSession.username = result.adminRoutes;
+          });
           response.redirect("/");
         } else {
           response.send('incorrect data, plz go back');
