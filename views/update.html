@@ -2,25 +2,26 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
+<link rel="stylesheet" href="/public/style.css" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <title>TASK</title>
 </head>
-
+<body>
 <h1>Здесь мы можем изменять данные</h1>
 <form action="/users/update" method="post">
-<label for="old_name">Old name</label>
+<div><label for="old_name"><p>Old name</p></label>
 <input type="text" name="old_name" />
-<label for="old_email">Old email</label>
-<input type="email" name="old_email" />
-<label for="new_name">New name</label>
+<label for="old_email"><p>Old email</p></label>
+<input type="email" name="old_email" /></div>
+<div><label for="new_name"><p>New name</p></label>
 <input type="text" name="new_name" />
-<label for="new_email">New email</label>
-<input type="email" name="new_email" />
-<input
-type="submit"
-onClick='location.href="/users"'/>
-</form>
-<a href="/"><input type="submit" value="Back"></>
+<label for="new_email"><p>New email</p></label>
+<input type="email" name="new_email" /></div>
+<div class="button_enter"><input
+    type="submit"
+    onClick='location.href="/users"'/></div>
+    </form>
+    <div class="back"><a href="/"><input type="submit" value="Back"></a></div>
 </body>
 </html>
